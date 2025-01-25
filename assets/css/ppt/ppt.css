@@ -1,3 +1,10 @@
+body {
+    background-image: url('../../../assets/image/triki/fondotriki.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .game-container {
     display: flex;
     flex-direction: column;

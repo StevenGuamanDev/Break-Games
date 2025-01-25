@@ -20,20 +20,20 @@
             <div class="flex flex-col items-center mb-4 block md:hidden">
                 <div class="flex items-center">
                     <div onclick="confirmExit(event)"
-                        class="w-18 h-18 bg-white rounded-lg shadow-md flex flex-col justify-center items-center p-4">
+                        class="w-18 h-18 bg-red-200 rounded-lg shadow-md hover:bg-red-700 flex flex-col justify-center items-center p-4">
                         <a href="#" class="fa-solid fa-arrow-left mb-2 text-3xl"></a>
                     </div>
                     <div class="mx-4 text-1xl font-bold"></div>
-                    <div class="w-18 h-18 bg-white rounded-lg shadow-md flex flex-col justify-center items-center p-4">
+                    <div class="w-18 h-18 bg-blue-100 rounded-lg shadow-md flex flex-col justify-center items-center p-4">
                         <i id="iconoUsuario1" class="fa-solid fa-user mb-2 text-2xl text-blue-500"></i>
                     </div>
                     <div class="mx-2 text-1xl font-bold">VS</div>
-                    <div class="w-18 h-18 bg-white rounded-lg shadow-md flex flex-col justify-center items-center p-4">
+                    <div class="w-18 h-18 bg-blue-100 rounded-lg shadow-md flex flex-col justify-center items-center p-4">
                         <i id="iconoRobot1" class="fa-solid fa-robot mb-2 text-2xl text-red-500"></i>
                     </div>
                     <div class="mx-4 text-1xl font-bold"></div>
                     <div onclick="reiniciarJuego(event)"
-                        class="w-18 h-18 bg-white rounded-lg shadow-md flex flex-col justify-center items-center p-4">
+                        class="w-18 h-18 bg-blue-200 rounded-lg shadow-md hover:bg-blue-700 flex flex-col justify-center items-center p-4">
                         <a class="fa-solid fa-rotate-right mb-2 text-3xl"></a>
                     </div>
                 </div>
@@ -41,14 +41,14 @@
 
             <!-- Contenedor 1 -->
             <div class="hidden md:flex col-span-1 md:col-span-1 shadow-sm md:pr-2 justify-center">
-                <div class="w-60 h-100 bg-white rounded-lg shadow-md flex justify-center items-center">
-                    <img src="https://i.pinimg.com/originals/78/5d/5a/785d5a045feef76122e6b4adabe8ee8a.gif"
+                <div class="w-60 h-100 bg-blue-100 rounded-lg shadow-md flex justify-center items-center p-4">
+                    <img src="https://i.pinimg.com/originals/90/ce/01/90ce01eca91ed9778501e138d5df786b.png"
                         alt="Jugador">
                 </div>
             </div>
 
             <!-- Contenedor 2 -->
-            <div class="col-span-1 md:col-span-1 bg-white rounded-lg shadow-md p-5 flex justify-center items-center">
+            <div class="col-span-1 md:col-span-1 bg-blue-100 rounded-lg shadow-md p-5 flex justify-center items-center">
                 <div id="juego" class="w-full h-full max-w-screen-lg max-h-screen-lg">
                     <div id="tablero" class="tablero"></div>
                 </div>
@@ -59,14 +59,14 @@
                 <div class="flex flex-col items-center">
                     <div class="flex items-center">
                         <div id="dice-container"
-                            class="w-80 h-40 bg-white rounded-lg shadow-md flex justify-center items-center p-4 relative">
+                            class="w-80 h-40 bg-blue-100 rounded-lg shadow-md flex justify-center items-center p-4 relative">
                             <button id="btn-lanzar-dado1"
                                 class="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none">
                                 Tirar Dado
                             </button>
                             <!-- Cara del dado -->
                             <div id="dice1"
-                                class="w-20 h-20 flex justify-center items-center border border-gray-300 rounded-lg relative transition-transform duration-500">
+                                class="w-20 h-20 bg-white flex justify-center items-center border border-gray-300 rounded-lg relative transition-transform duration-500">
                                 <!-- Puntos del dado -->
                                 <div
                                     class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black rounded-full">
@@ -83,15 +83,15 @@
 
             <!-- Contenedor 3 -->
             <div class="hidden md:flex col-span-1 md:col-span-1 shadow-sm md:pr-2 justify-center">
-                <div class="w-60 h-100 bg-white rounded-lg shadow-md flex justify-center items-center">
-                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/5eeea355389655.59822ff824b72.gif"
+                <div class="w-60 h-100 bg-blue-100 rounded-lg shadow-md flex justify-center items-center p-4">
+                    <img src="https://i.pinimg.com/originals/78/6f/21/786f212fb80025a8d6d38b2b3d67c2af.gif"
                         alt="celda">
                 </div>
             </div>
 
             <!-- Contenedor 4 -->
             <div class="hidden md:flex col-span-1 md:col-span-1 shadow-sm md:pr-2 justify-center items-center">
-                <div class="bg-white rounded-lg shadow-md flex flex-col justify-center items-center p-4">
+                <div class="bg-blue-100 rounded-lg shadow-md flex flex-col justify-center items-center p-4">
                     <div class="flex items-center">
                         <!-- Icono de Usuario (azul) -->
                         <div class="w-20 h-20 flex flex-col justify-center items-center p-4">
@@ -110,13 +110,13 @@
                     <a onclick="reiniciarJuego(event)"
                         class="mb-2 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg w-full text-center">Reiniciar</a>
                     <a href="#" onclick="confirmExit(event)"
-                        class="mb-2 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg w-full text-center">Salir</a>
+                        class="mb-2 bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-lg w-full text-center">Salir</a>
                 </div>
             </div>
 
             <!-- Contenedor 5 -->
             <div class="hidden md:flex col-span-1 md:col-span-1 shadow-sm md:pr-2 justify-center items-center">
-                <div class="w-80 h-40 bg-white rounded-lg shadow-md flex flex-col justify-center items-center p-4">
+                <div class="w-80 h-40 bg-blue-100 rounded-lg shadow-md flex flex-col justify-center items-center p-4">
                     <!-- Botón para tirar el dado -->
                     <button id="btn-lanzar-dado"
                         class="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none">
@@ -128,10 +128,10 @@
             <!-- Contenedor 6 -->
             <div class="hidden md:flex col-span-1 md:col-span-1 shadow-sm md:pr-2 justify-center items-center">
                 <div id="dice-container"
-                    class="w-60 h-60 bg-white rounded-lg shadow-md flex justify-center items-center p-4 relative">
+                    class="w-60 h-60 bg-blue-100 rounded-lg shadow-md flex justify-center items-center p-4 relative">
                     <!-- Cara del dado -->
                     <div id="dice"
-                        class="w-24 h-24 flex justify-center items-center border border-gray-300 rounded-lg relative transition-transform duration-500">
+                        class="w-24 h-24 bg-white flex justify-center items-center border border-gray-300 rounded-lg relative transition-transform duration-500">
                         <!-- Puntos del dado -->
                         <div
                             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black rounded-full">

@@ -1,82 +1,89 @@
-     /* styles.css */
-     .container {
-        max-width: 100%;
-        overflow: hidden;
-    }
+body {
+    background-image: url('../../../assets/image/triki/fondotriki.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-    .grid-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
+/* styles.css */
+.container {
+    max-width: 100%;
+    overflow: hidden;
+}
 
-    .grid-content {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-    }
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
 
-    .grid-row {
-        display: flex;
-        gap: 5px;
-        width: 100%;
-    }
+.grid-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
 
-    .grid-cell {
-        flex: 1;
-        height: 30px;
-        border: 1px solid #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f0f0f0;
-    }
+.grid-row {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
 
-    /* Asegúrate de que estas clases estén definidas en tu archivo CSS */
-    .bg-gray-300 {
-        background-color: #e0e0e0;
-    }
+.grid-cell {
+    flex: 1;
+    height: 30px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
 
-    .bg-green-500 {
-        background-color: #4caf50;
-    }
+/* Asegúrate de que estas clases estén definidas en tu archivo CSS */
+.bg-gray-300 {
+    background-color: #e0e0e0;
+}
 
-    .bg-yellow-500 {
-        background-color: #ffeb3b;
-    }
+.bg-green-500 {
+    background-color: #4caf50;
+}
 
-    #word-container span,
-    #word-container1 span {
-        font-size: 2rem;
-        /* Ajusta el tamaño según sea necesario */
-        border-bottom-width: 2px;
-        border-style: dashed;
-        border-color: #4A5568;
-        /* Cambia el color si es necesario */
-        padding: 0 0.5rem;
-        margin: 0 0.25rem;
-    }
+.bg-yellow-500 {
+    background-color: #ffeb3b;
+}
 
+#word-container span,
+#word-container1 span {
+    font-size: 2rem;
+    /* Ajusta el tamaño según sea necesario */
+    border-bottom-width: 2px;
+    border-style: dashed;
+    border-color: #4A5568;
+    /* Cambia el color si es necesario */
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+}
+
+#virtual-keyboard {
+    display: none;
+}
+
+/* Mostrar el teclado en dispositivos móviles */
+@media (max-width: 768px) {
     #virtual-keyboard {
-        display: none;
+        display: flex;
     }
+}
 
-    /* Mostrar el teclado en dispositivos móviles */
-    @media (max-width: 768px) {
-        #virtual-keyboard {
-            display: flex;
-        }
-    }
-
-    .key {
-        background: #f0f0f0;
-        border: 1px solid #ccc;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+.key {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}

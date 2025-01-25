@@ -151,56 +151,55 @@ function addDots(number, diceElement) {
 }
 
 
-function avanzar(numeroCasillas) {
-    const posicionAnterior = turno === jugador1 ? posicionJugador1 : posicionJugador2;
-    let nuevaPosicion = Math.min(posicionAnterior + numeroCasillas, NUMERO_CASILLAS);
+// function avanzar(numeroCasillas) {
+//     const posicionAnterior = turno === jugador1 ? posicionJugador1 : posicionJugador2;
+//     let nuevaPosicion = Math.min(posicionAnterior + numeroCasillas, NUMERO_CASILLAS);
 
-    moverFichasPasoAPaso(posicionAnterior, nuevaPosicion).then(() => {
-        verificarCasilla(nuevaPosicion);
-        cambiarTurno(); // Aquí se actualiza el turno y el sombreado
+//     moverFichasPasoAPaso(posicionAnterior, nuevaPosicion).then(() => {
+//         verificarCasilla(nuevaPosicion);
+//         cambiarTurno(); // Aquí se actualiza el turno y el sombreado
 
-        // Actualizar el sombreado después de cambiar el turno
-        actualizarSombreado(turno);
+//         // Actualizar el sombreado después de cambiar el turno
+//         actualizarSombreado(turno);
 
-        if (posicionJugador1 === NUMERO_CASILLAS) {
-            winSound.currentTime = 0;
-            winSound.play();
-            Swal.fire({
-                title: '¡Ganador!',
-                text: `${jugador1} ha ganado!`,
-                icon: 'success',
-                confirmButtonText: 'OK'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "serpescal.html";
-                }
-            });
-            deshabilitarBotonLanzarDado();
-        } else if (posicionJugador2 === NUMERO_CASILLAS) {
-            loseSound.currentTime = 0;
-            loseSound.play();
-            Swal.fire({
-                title: '¡Ganador!',
-                text: `${jugador2} Te ha ganado!`,
-                icon: 'error',
-                confirmButtonText: 'OK'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "serpescal.html";
-                }
-            });
-            deshabilitarBotonLanzarDado();
-        }
-    });
+//         if (posicionJugador1 === NUMERO_CASILLAS) {
+//             winSound.currentTime = 0;
+//             winSound.play();
+//             Swal.fire({
+//                 title: '¡Ganador!',
+//                 text: `${jugador1} ha ganado!`,
+//                 icon: 'success',
+//                 confirmButtonText: 'OK'
+//             }).then((result) => {
+//                 if (result.isConfirmed) {
+//                     window.location.href = "serpescal.html";
+//                 }
+//             });
+//             deshabilitarBotonLanzarDado();
+//         } else if (posicionJugador2 === NUMERO_CASILLAS) {
+//             loseSound.currentTime = 0;
+//             loseSound.play();
+//             Swal.fire({
+//                 title: '¡Ganador!',
+//                 text: `${jugador2} Te ha ganado!`,
+//                 icon: 'error',
+//                 confirmButtonText: 'OK'
+//             }).then((result) => {
+//                 if (result.isConfirmed) {
+//                     window.location.href = "serpescal.html";
+//                 }
+//             });
+//             deshabilitarBotonLanzarDado();
+//         }
+//     });
 
-    // Actualiza la posición final al terminar el intervalo
-    if (turno === jugador1) {
-        posicionJugador1 = nuevaPosicion;
-    } else {
-        posicionJugador2 = nuevaPosicion;
-    }
-}
-
+//     // Actualiza la posición final al terminar el intervalo
+//     if (turno === jugador1) {
+//         posicionJugador1 = nuevaPosicion;
+//     } else {
+//         posicionJugador2 = nuevaPosicion;
+//     }
+// }
 
 
 function actualizarSombreado(turno) {
@@ -229,12 +228,21 @@ function cambiarTurno() {
     actualizarSombreado(turno);
 }
 
+// Variable para verificar si el turno está en proceso de movimiento
+let turnoEnMovimiento = false;
 
 function moverFichasPasoAPaso(posicionAnterior, nuevaPosicion) {
     return new Promise((resolve) => {
         let posicionActual = posicionAnterior;
         const paso = 1; // Número de casillas que se moverá en cada intervalo
         const intervalo = 200; // Tiempo en milisegundos para cada paso de la animación
+
+        // Deshabilitar el botón de lanzar dado antes de mover
+        btnLanzarDado.disabled = true;
+        btnLanzarDado1.disabled = true;
+
+        // Establecer que el turno está en movimiento
+        turnoEnMovimiento = true;
 
         // Define el intervalo para el movimiento paso a paso
         const movimiento = setInterval(() => {
@@ -244,13 +252,80 @@ function moverFichasPasoAPaso(posicionAnterior, nuevaPosicion) {
                 clearInterval(movimiento);
                 resolve(); // Resuelve la promesa cuando el movimiento termina
             }
-            playMoveSound()
+            playMoveSound();
             moverJugador('#casilla-', posicionActual - paso, posicionActual);
 
         }, intervalo);
     });
 }
 
+function avanzar(numeroCasillas) {
+    // Verificar si el turno está en movimiento (si el jugador ya está moviendo su ficha)
+    if (turnoEnMovimiento) {
+        Swal.fire({
+            title: 'Espera!',
+            text: '¡Espera a que termine el turno del otro Jugador!',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+        });
+        return; // No hacer nada más si el turno está en movimiento
+    }
+
+    const posicionAnterior = turno === jugador1 ? posicionJugador1 : posicionJugador2;
+    let nuevaPosicion = Math.min(posicionAnterior + numeroCasillas, NUMERO_CASILLAS);
+
+    moverFichasPasoAPaso(posicionAnterior, nuevaPosicion).then(() => {
+        verificarCasilla(nuevaPosicion);
+        cambiarTurno(); // Aquí se actualiza el turno y el sombreado
+
+        // Actualizar el sombreado después de cambiar el turno
+        actualizarSombreado(turno);
+
+        if (posicionJugador1 === NUMERO_CASILLAS) {
+            winSound.currentTime = 0;
+            winSound.play();
+            Swal.fire({
+                title: '¡Ganador!',
+                text: `¡Ha ganado el ${jugador1}!`,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "serpescal.html";
+                }
+            });
+            deshabilitarBotonLanzarDado();
+        } else if (posicionJugador2 === NUMERO_CASILLAS) {
+            winSound.currentTime = 0;
+            winSound.play();
+            Swal.fire({
+                title: '¡Ganador!',
+                text: `¡Ha ganado el ${jugador2}!`,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "serpescal.html";
+                }
+            });
+            deshabilitarBotonLanzarDado();
+        }
+
+        // Habilitar el botón de lanzar dado después de cambiar el turno
+        btnLanzarDado.disabled = false;
+        btnLanzarDado1.disabled = false;
+
+        // Establecer que el turno ya no está en movimiento
+        turnoEnMovimiento = false;
+    });
+
+    // Actualiza la posición final al terminar el intervalo
+    if (turno === jugador1) {
+        posicionJugador1 = nuevaPosicion;
+    } else {
+        posicionJugador2 = nuevaPosicion;
+    }
+}
 
 
 function playMoveSound() {
@@ -302,29 +377,32 @@ function moverJugador(selector, origen, destino) {
         casillaOrigen.classList.remove('jugador1', 'jugador2');  // Remover las clases del jugador
     }
 
-    // Limpiar el ícono del jugador en la casilla de destino
-    const casillaDestino = document.querySelector(`${selector}${destino}`);
-    const iconoJugadorDestino = casillaDestino.querySelector('.icono-jugador');
-    if (iconoJugadorDestino) {
-        iconoJugadorDestino.remove(); // Eliminar el ícono del jugador en caso de que exista
-    }
-
     // Asegúrate de que el contenedor tenga posición relativa
+    const casillaDestino = document.querySelector(`${selector}${destino}`);
     casillaDestino.style.position = 'relative';
 
-    // Colocar el jugador en la casilla de destino
+    // Colocar el jugador en la casilla de destino sin eliminar las fichas previas
     if (turno === jugador1) {
-        casillaDestino.insertAdjacentHTML('beforeend', `<i class="fa-solid fa-user icono-jugador mb-2 text-2xl text-blue-500 absolute z-50"></i>`);
-        casillaDestino.classList.add('jugador1');
+        // Verificar si ya hay una ficha de jugador1
+        const fichaJugador1 = casillaDestino.querySelector('.icono-jugador.jugador1');
+        if (!fichaJugador1) {
+            casillaDestino.insertAdjacentHTML('beforeend', `<i class="fa-solid fa-user icono-jugador jugador1 mb-2 text-2xl text-blue-500 absolute z-50"></i>`);
+        }
     } else {
-        casillaDestino.insertAdjacentHTML('beforeend', `<i class="fa-solid fa-robot icono-jugador mb-2 text-2xl text-red-500 absolute z-50"></i>`);
-        casillaDestino.classList.add('jugador2');
+        // Verificar si ya hay una ficha de jugador2
+        const fichaJugador2 = casillaDestino.querySelector('.icono-jugador.jugador2');
+        if (!fichaJugador2) {
+            casillaDestino.insertAdjacentHTML('beforeend', `<i class="fa-solid fa-robot icono-jugador jugador2 mb-2 text-2xl text-red-500 absolute z-50"></i>`);
+        }
     }
 }
 
 
+
+
 function cambiarTurno() {
     turno = turno === jugador1 ? jugador2 : jugador1;
+    console.log('Prueba'.turno);
 }
 
 

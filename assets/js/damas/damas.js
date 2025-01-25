@@ -244,16 +244,16 @@ function manejarVictoria() {
 
         if (ganador === 'blanco') {
             Swal.fire({
-                title: '¡Has ganado!',
+                title: '¡Ha ganado Jugador 1!',
                 text: `Tiempo de fichas blancas: ${formatTiempo(tiempoBlanco)}\nTiempo de fichas negras: ${formatTiempo(tiempoNegro)}`,
                 icon: 'success'
             });
             sonidoVictoriaBlanco.play();
         } else {
             Swal.fire({
-                title: 'Has perdido',
+                title: '¡Ha ganado Jugador 2!',
                 text: `Tiempo de fichas blancas: ${formatTiempo(tiempoBlanco)}\nTiempo de fichas negras: ${formatTiempo(tiempoNegro)}`,
-                icon: 'error'
+                icon: 'success'
             });
             sonidoVictoriaNegro.play();
         }

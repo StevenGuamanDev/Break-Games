@@ -1,153 +1,158 @@
-       /* Puedes agregar clases personalizadas aquí si es necesario */
-       .tablero {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        /* Ajusta el número de columnas */
-        grid-template-rows: repeat(10, 1fr);
-        /* Ajusta el número de filas */
-        gap: 2px;
-        border: 2px solid #333;
-        width: 100%;
-        /* Ocupa todo el ancho del contenedor */
-        height: 100%;
-        /* Ocupa todo el alto del contenedor */
-    }
+body {
+    background-image: url('../../../assets/image/triki/fondotriki.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-    .casilla {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        /* Tamaño de la fuente más grande */
-        font-weight: bold;
-        background-color: #ddd;
-        box-sizing: border-box;
-        /* Asegura que el padding no afecte el tamaño de las celdas */
-    }
+/* Puedes agregar clases personalizadas aquí si es necesario */
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    /* Ajusta el número de columnas */
+    grid-template-rows: repeat(10, 1fr);
+    /* Ajusta el número de filas */
+    gap: 2px;
+    border: 2px solid #333;
+    width: 100%;
+    /* Ocupa todo el ancho del contenedor */
+    height: 100%;
+    /* Ocupa todo el alto del contenedor */
+}
 
-    .casilla .contenido {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.casilla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    /* Tamaño de la fuente más grande */
+    font-weight: bold;
+    background-color: #ddd;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte el tamaño de las celdas */
+}
 
-    .fa-arrow-up {
-        color: green;
-        font-size: 0.8em;
-        /* Flecha más pequeña */
-    }
+.casilla .contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .fa-arrow-down {
-        color: red;
-        font-size: 0.8em;
-        /* Flecha más pequeña */
-    }
+.fa-arrow-up {
+    color: green;
+    font-size: 0.8em;
+    /* Flecha más pequeña */
+}
 
-    .casilla div {
-        font-size: 0.7em;
-        /* Números adicionales más pequeños */
-    }
+.fa-arrow-down {
+    color: red;
+    font-size: 0.8em;
+    /* Flecha más pequeña */
+}
 
-    #jugador-turno {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.casilla div {
+    font-size: 0.7em;
+    /* Números adicionales más pequeños */
+}
 
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007BFF;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 5px;
-        transition: background-color 0.3s ease;
-    }
+#jugador-turno {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    button:hover {
-        background-color: #0056b3;
-    }
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
 
-    #resultado {
-        margin-top: 10px;
-        font-size: 18px;
-        font-weight: bold;
-    }
+button:hover {
+    background-color: #0056b3;
+}
 
-
-
-    .sombreado-activado {
-        color: aquamarine;
-    }
-
-    /* Contenedor del dado */
-    .dice {
-        position: relative;
-        width: 60px;
-        height: 60px;
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Cara del dado */
-    .dice-face {
-        position: relative;
-        width: 24px;
-        height: 24px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-    }
-
-    /* Puntos del dado */
-    .dice-face::before,
-    .dice-face::after {
-        content: '';
-        position: absolute;
-        background-color: black;
-        border-radius: 50%;
-    }
-
-    .dice-face::before {
-        top: 50%;
-        left: 50%;
-        width: 8px;
-        height: 8px;
-        transform: translate(-50%, -50%);
-    }
-
-    .dice-face::after {
-        width: 4px;
-        height: 4px;
-    }
-
-    .dice-face:nth-child(1) {
-        top: 4px;
-        left: 4px;
-    }
-
-    .dice-face:nth-child(2) {
-        top: 4px;
-        right: 4px;
-    }
-
-    .dice-face:nth-child(3) {
-        bottom: 4px;
-        left: 4px;
-    }
-
-    .dice-face:nth-child(4) {
-        bottom: 4px;
-        right: 4px;
-    }
-
-    .dice {
-        transition: transform 0.5s ease-in-out;
-    }
+#resultado {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
 
 
+
+.sombreado-activado {
+    color: rgb(17, 129, 75);
+}
+
+/* Contenedor del dado */
+.dice {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cara del dado */
+.dice-face {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+/* Puntos del dado */
+.dice-face::before,
+.dice-face::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.dice-face::before {
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%);
+}
+
+.dice-face::after {
+    width: 4px;
+    height: 4px;
+}
+
+.dice-face:nth-child(1) {
+    top: 4px;
+    left: 4px;
+}
+
+.dice-face:nth-child(2) {
+    top: 4px;
+    right: 4px;
+}
+
+.dice-face:nth-child(3) {
+    bottom: 4px;
+    left: 4px;
+}
+
+.dice-face:nth-child(4) {
+    bottom: 4px;
+    right: 4px;
+}
+
+.dice {
+    transition: transform 0.5s ease-in-out;
+}

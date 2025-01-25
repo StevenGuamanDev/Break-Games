@@ -1,3 +1,10 @@
+body {
+    background-image: url('../../../assets/image/triki/fondotriki.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .grid-container {
     position: relative;
     width: 100%;
